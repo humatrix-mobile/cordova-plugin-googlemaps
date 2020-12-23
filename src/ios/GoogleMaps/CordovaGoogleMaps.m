@@ -77,7 +77,7 @@
     view = [subViews objectAtIndex:i];
     //NSLog(@"--->remove i=%d class=%@", i, view.class);
     [view removeFromSuperview];
-    [self.pluginLayer addSubview: view];
+    [self.pluginLayer insertSubview:view atIndex:0];
   }
   [self.viewController.view addSubview:self.pluginLayer];
 }
