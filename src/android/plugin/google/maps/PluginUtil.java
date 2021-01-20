@@ -125,11 +125,12 @@ public class PluginUtil {
   @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
   public static JSONObject location2Json(Location location) throws JSONException {
     JSONObject latLng = new JSONObject();
-    latLng.put("isFromMockProvider", location.isFromMockProvider());
+    
     latLng.put("lat", location.getLatitude());
     latLng.put("lng", location.getLongitude());
 
     JSONObject params = new JSONObject();
+    params.put("isFromMockProvider", location.isFromMockProvider());
     params.put("latLng", latLng);
 
     if (VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
