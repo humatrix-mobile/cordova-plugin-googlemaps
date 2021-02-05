@@ -59,17 +59,7 @@ public class PluginEnvironment extends CordovaPlugin {
       GoogleApiAvailability.getInstance().isGooglePlayServicesAvailable(cordova.getActivity());
     if (checkGooglePlayServices != ConnectionResult.SUCCESS) {
       String errorMsg = GoogleApiAvailability.getInstance().getErrorString(checkGooglePlayServices);
-      callbackContext.error(errorMsg);
-
-      try {
-        cordova.getActivity().startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=com.google.android.gms")));
-      } catch (android.content.ActivityNotFoundException anfe) {
-        cordova.getActivity().startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://play.google.com/store/apps/details?id=com.google.android.gms")));
-      }
-
-      // End the app (in order to prevent lots of crashes)
-      cordova.getActivity().finish();
-
+      
       return;
     }
 
