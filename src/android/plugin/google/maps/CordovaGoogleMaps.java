@@ -68,6 +68,10 @@ public class CordovaGoogleMaps extends CordovaPlugin implements ViewTreeObserver
     root = (ViewGroup) view.getParent();
 
     pluginManager = webView.getPluginManager();
+    
+    int checkGooglePlayServices = GooglePlayServicesUtil.isGooglePlayServicesAvailable(activity);
+    Log.d(TAG, "----> checkGooglePlayServices = " + (ConnectionResult.SUCCESS == checkGooglePlayServices));
+    if(ConnectionResult.SUCCESS != checkGooglePlayServices) return;
 
     cordova.getActivity().runOnUiThread(new Runnable() {
       @SuppressLint("NewApi")
